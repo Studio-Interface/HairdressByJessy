@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hairdress By Jessy</title>
+    <meta name="description" content="Professionele kapsalon Hairdress By Jessy. Moderne kapsels, kleuring en styling voor elke gelegenheid.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.jpg" alt="Hairdress By Jessy Logo" class="logo-img">
+                <h1 class="logo-text">Hairdress By Jessy</h1>
+            </a>
+            
+            <!-- Mobile menu toggle -->
+            <button class="mobile-menu-toggle" aria-label="Menu openen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Mobile menu overlay -->
+            <div class="menu-overlay"></div>
+            
+            <nav class="nav">
+                <button class="mobile-menu-close" aria-label="Menu sluiten">
+                    <i class="fas fa-times"></i>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#diensten" class="nav-link">Diensten</a></li>
+                    <li><a href="prijzen.html" class="nav-link">Prijzen</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="producten.html" class="nav-link">Producten</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="hero-title">Jouw haar, jouw stijl</h2>
+                    <p class="hero-subtitle">Ontdek je perfecte look bij Hairdress By Jessy. Professionele kapsels, kleuring en styling in een luxueuze en ontspannen sfeer.<br><br>Alleen op afpsraak</p>
+                    <div class="contact-buttons">
+                        <a href="tel:0634609242" class="contact-btn">
+                            <i class="fas fa-phone"></i>
+                            maak een afspraak
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="diensten" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Onze Diensten</h2>
+                    <p class="section-subtitle">Professionele haarverzorging op maat</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h3 class="service-title">Knippen & Styling</h3>
+                        <p class="service-description">Moderne kapsels en professionele styling aangepast aan jouw gezichtsvorm en persoonlijke stijl.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3 class="service-title">Kleuring & Highlights</h3>
+                        <p class="service-description">Van subtiele highlights tot complete kleurveranderingen met hoogwaardige, haarvriendelijke producten.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3 class="service-title">Haarbehandelingen</h3>
+                        <p class="service-description">Verzorgende treatments en maskers om je haar gezond, glanzend en sterk te houden.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3 class="service-title">Speciale Gelegenheden</h3>
+                        <p class="service-description">Bruidskapsel, feestkapsels en styling voor bijzondere momenten in je leven.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="service-title">Epileren</h3>
+                        <p class="service-description">Vakkundig epileren voor een verzorgde uitstraling en perfecte wenkbrauwen.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-pump-soap"></i>
+                        </div>
+                        <h3 class="service-title">b3 Brazilian</h3>
+                        <p class="service-description">Een innovatieve haarbehandeling die zorgt voor een langdurig glad en glanzend resultaat.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prices CTA Section -->
+        <section id="prijzen" class="prices-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Transparante prijzen</h2>
+                    <p class="cta-subtitle">Bekijk onze complete prijslijst met alle diensten en behandelingen</p>
+                    <div class="cta-highlights">
+                        <div class="cta-highlight">
+                            <i class="fas fa-cut"></i>
+                            <span>Knippen vanaf €16,50</span>
+                        </div>
+                        <div class="cta-highlight">
+                            <i class="fas fa-palette"></i>
+                            <span>Kleuring vanaf €26,00</span>
+                        </div>
+                        <div class="cta-highlight">
+                            <i class="fas fa-spa"></i>
+                            <span>Behandelingen vanaf €7,00</span>
+                        </div>
+                    </div>
+                    <a href="prijzen.html" class="cta-button">
+                        <span>Bekijk alle prijzen</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <p class="cta-note">Prijslijst geldig per 1 november 2025 | Bij voorkeur pinnen</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Promotion Section -->
+        <section class="products-promo">
+            <div class="container">
+                <div class="promo-content">
+                    <div class="promo-text">
+                        <h2 class="promo-title">Verleng je salon ervaring thuis</h2>
+                        <p class="promo-subtitle">Ontdek onze zorgvuldig geselecteerde professionele haarverzorgingsproducten</p>
+                        <div class="promo-features">
+                            <div class="promo-feature">
+                                <i class="fas fa-star"></i>
+                                <span>Professionele kwaliteit</span>
+                            </div>
+                            <div class="promo-feature">
+                                <i class="fas fa-leaf"></i>
+                                <span>Haarvriendelijke formules</span>
+                            </div>
+                            <div class="promo-feature">
+                                <i class="fas fa-heart"></i>
+                                <span>Door Jessy aanbevolen</span>
+                            </div>
+                        </div>
+                        <p class="promo-description">
+                            Behoud de perfecte look tussen je salon bezoeken met dezelfde premium producten die wij gebruiken. 
+                            Van verzorgende shampoos tot styling producten - alles voor gezond en mooi haar.
+                        </p>
+                        <a href="producten.html" class="promo-btn">
+                            <span>Bekijk onze producten</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="promo-image">
+                        <div class="promo-products">
+                            <div class="promo-product">
+                                <i class="fas fa-pump-soap"></i>
+                                <span>Shampoos & Conditioners</span>
+                            </div>
+                            <div class="promo-product">
+                                <i class="fas fa-spray-can"></i>
+                                <span>Styling Producten</span>
+                            </div>
+                            <div class="promo-product">
+                                <i class="fas fa-magic"></i>
+                                <span>Behandelingen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">Contact</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Hoogstraat 85<br>6373 HP Landgraaf</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>06 34 60 92 42</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@hairdressbyjessy.nl</span>
+                    </div>
+                    <div class="socials">
+                        <h3 class="footer-title">Volg ons</h3>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/p/Hairdress-By-Jessy-100087771709573/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/hairdressbyjessy?igsh=YXI3c3AyMzhtbDQz" class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Openingstijden</h3>
+                <div class="opening-hours-container">
+                    <div class="week-info">
+                        <span class="current-week-text">Huidige week:</span>
+                        <span class="current-week-number" id="currentWeekNumber">Week ##</span>
+                    </div>
+                    
+                    <div class="week-tabs">
+                        <button class="week-tab" data-week="even" id="evenWeekTab">
+                            <span class="week-label">Even Weken</span>
+                        </button>
+                        <button class="week-tab" data-week="odd" id="oddWeekTab">
+                            <span class="week-label">Oneven Weken</span>
+                        </button>
+                    </div>
+                    
+                    <div class="opening-hours" id="evenWeekHours">
+                        <div class="hours-item">
+                            <span>Maandag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Dinsdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Woensdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Donderdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Vrijdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item weekend">
+                            <span>Zaterdag</span>
+                            <span>Gesloten</span>
+                        </div>
+                        <div class="hours-item weekend">
+                            <span>Zondag</span>
+                            <span>Gesloten</span>
+                        </div>
+                    </div>
+                    
+                    <div class="opening-hours" id="oddWeekHours" style="display: none;">
+                        <div class="hours-item weekend">
+                            <span>Maandag</span>
+                            <span>Gesloten</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Dinsdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Woensdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Donderdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Vrijdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Zaterdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item weekend">
+                            <span>Zondag</span>
+                            <span>Gesloten</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
