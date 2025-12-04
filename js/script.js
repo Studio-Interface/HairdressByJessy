@@ -559,5 +559,22 @@ document.head.appendChild(styleSheet);
 window.addEventListener('error', (e) => {
   console.error('JavaScript error:', e.error);
 });
-console.log("✅ script.js is geladen");
+
+// ===== SMOOTH SCROLL BEHAVIOR =====
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    const targetId = this.getAttribute('href').substring(1);
+    const target = document.getElementById(targetId);
+
+    if (!target) return;
+
+    e.preventDefault();
+
+    target.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  });
+});
+
 

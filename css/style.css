@@ -1,6 +1,13 @@
-/* ===== CSS VARIABLES ===== */
+/* ==========================================================================
+   HAIRDRESS BY JESSY - STYLESHEET
+   Gestructureerd per sectie en pagina
+   ========================================================================== */
+
+/* ==========================================================================
+   1. CSS VARIABLES & CONFIGURATIE
+   ========================================================================== */
 :root {
-  /* Colors */
+  /* Kleuren */
   --primary-gold: #D4AF37;
   --gold-light: #E5C557;
   --gold-dark: #B8941F;
@@ -14,7 +21,7 @@
   
   --border-light: #404040;
   
-  /* Typography */
+  /* Typografie */
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Poppins', sans-serif;
   
@@ -23,11 +30,13 @@
   --section-padding: 5rem 0;
   --section-padding-mobile: 3rem 0;
   
-  /* Transitions */
+  /* Transities */
   --transition: all 0.3s ease;
 }
 
-/* ===== BASE STYLES ===== */
+/* ==========================================================================
+   2. BASE STYLES & RESET
+   ========================================================================== */
 *,
 *::before,
 *::after {
@@ -48,6 +57,7 @@ body {
   position: relative;
 }
 
+/* Marmer achtergrond effect */
 body::before {
   content: '';
   position: fixed;
@@ -128,7 +138,9 @@ body > * {
   padding: 0 1.5rem;
 }
 
-/* ===== TYPOGRAPHY ===== */
+/* ==========================================================================
+   3. TYPOGRAFIE
+   ========================================================================== */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 600;
@@ -150,7 +162,11 @@ a {
   transition: var(--transition);
 }
 
-/* ===== BUTTONS ===== */
+/* ==========================================================================
+   4. BUTTONS (Globaal)
+   ========================================================================== */
+
+/* Primary CTA Button */
 .cta-button {
   display: inline-flex;
   align-items: center;
@@ -224,8 +240,17 @@ a {
   font-size: 0.9rem;
 }
 
+/* Contact Buttons Container */
+.contact-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-/* ===== HEADER & NAVIGATION ===== */
+/* ==========================================================================
+   5. HEADER & NAVIGATIE (Alle pagina's)
+   ========================================================================== */
 .header {
   background: rgba(31, 31, 31, 0.7);
   backdrop-filter: blur(12px);
@@ -245,7 +270,7 @@ a {
   padding: 1rem 1.5rem;
 }
 
-/* Logo Styles */
+/* Logo */
 .logo {
   display: flex;
   align-items: center;
@@ -267,7 +292,7 @@ a {
   margin: 0;
 }
 
-/* Desktop Navigation */
+/* Desktop Navigatie */
 .nav {
   display: block;
 }
@@ -356,78 +381,9 @@ a {
   transform: scale(1.1);
 }
 
-/* Mobile Navigation Responsive */
-@media (max-width: 800px) {
-  .mobile-menu-toggle {
-    display: flex;
-  }
-  
-  .mobile-menu-close {
-    display: block;
-  }
-  
-  .nav {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 300px;
-    height: 100vh;
-    background: var(--bg-light);
-    border-right: 1px solid var(--border-light);
-    z-index: 1000;
-    transition: left 0.3s ease;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .nav.active {
-    left: 0;
-  }
-  
-  .nav-list {
-    flex-direction: column;
-    gap: 0;
-    align-items: stretch;
-    padding: 80px 0 0 0;
-    height: 100%;
-  }
-  
-  .nav-link {
-    display: block;
-    padding: 1.2rem 2rem;
-    border-bottom: 1px solid var(--border-light);
-    color: var(--text-dark);
-  }
-  
-  .nav-link::after {
-    display: none;
-  }
-  
-  .nav-link:hover,
-  .nav-link.active {
-    background: rgba(212, 175, 55, 0.1);
-    color: var(--primary-gold);
-  }
-  
-  .menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-  }
-  
-  .menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-/* ===== SECTIONS GENERAL ===== */
+/* ==========================================================================
+   6. SECTIE ALGEMENE STYLES
+   ========================================================================== */
 section {
   padding: var(--section-padding);
 }
@@ -465,7 +421,7 @@ section {
   font-size: 1.1rem;
 }
 
-/* Page Header (for subpages) */
+/* Page Header (voor subpagina's) */
 .page-header {
   padding: 6rem 0 4rem;
   background: 
@@ -491,92 +447,9 @@ section {
   margin: 0 auto;
 }
 
-/* ===== HERO SECTION ===== */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--section-padding);
-  background: linear-gradient(135deg, rgba(13, 13, 13, 0.7) 0%, rgba(13, 13, 13, 0.75) 100%), 
-              url('../assets/kapsalon r.jpeg') center/cover no-repeat;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.hero-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 1.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.hero-subtitle {
-  font-size: 1.2rem;
-  color: var(--text-light);
-  margin-bottom: 2.5rem;
-  line-height: 1.7;
-}
-
-/* ===== SERVICES SECTION ===== */
-.services {
-  background: rgba(52, 52, 52, 0.5);
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-.service-card {
-  background: var(--bg-light);
-  padding: 2.5rem 2rem;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  transition: var(--transition);
-  border: 1px solid var(--border-light);
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.service-icon {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(45deg, var(--primary-gold), var(--gold-light));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-  font-size: 2rem;
-  color: white;
-}
-
-.service-title {
-  color: var(--text-dark);
-  margin-bottom: 1rem;;
-}
-
-.service-description {
-  color: var(--text-light);
-  line-height: 1.7;
-}
-
-/* ===== FOOTER & OPENING HOURS ===== */
+/* ==========================================================================
+   7. FOOTER & OPENINGSTIJDEN (Alle pagina's)
+   ========================================================================== */
 .footer {
   background: #2d2d2d;
   color: white;
@@ -603,7 +476,7 @@ section {
   font-size: 1.3rem;
 }
 
-/* Contact Info Styling */
+/* Contact Info */
 .contact-info {
   max-width: 100%;
 }
@@ -650,7 +523,7 @@ section {
   transform: translateY(-3px);
 }
 
-/* Opening Hours with Week System */
+/* Openingstijden Week Systeem */
 .opening-hours-container {
   max-width: 100%;
 }
@@ -753,498 +626,169 @@ section {
   font-style: italic;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 768px) {
-  :root {
-    --section-padding: var(--section-padding-mobile);
-  }
-  
-  h1 {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-  }
-  
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-  
-  .service-title {
-    font-size: 1.4rem;
-  }
-  
-  /* H2 en subtitle font-sizes op tablet niveau */
-  h2 {
-    font-size: 1.8rem;
-  }
-  
-  .section-subtitle,
-  .page-subtitle,
-  .hero-subtitle,
-  .promo-subtitle,
-  .cta-subtitle {
-    font-size: 1rem;
-  }
-}
-
-/* ===== TABLET PORTRAIT MODE (600px) ===== */
-@media (max-width: 600px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .footer-content {
-    gap: 1.5rem;
-    padding: 0 1.5rem;
-  }
-  
-  .footer-section {
-    max-width: 350px;
-  }
-  
-  .hero-title {
-    font-size: clamp(2rem, 5vw, 3rem);
-  }
-  
-  .section-padding {
-    padding: 3rem 0;
-  }
-  
-  .promo-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-  }
-  
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-  
-  .price-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 425px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .price-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  .promo-subtitle {
-    font-size: 1rem;
-  }
-  
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    gap: 2rem;
-    padding: 0 2rem;
-  }
-  
-  .footer-section {
-    flex: none;
-    max-width: 400px;
-    width: 100%;
-  }
-  
-  .contact-item span,
-  .hours-item span {
-    text-align: left;
-  }
-  
-  .contact-item,
-  .hours-item {
-    justify-content: center;
-  }
-  
-  .social-links {
-    justify-content: center;
-  }
-  
-  .hours-item {
-    justify-content: space-between;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    font-size: 12px;
-  }
-  
-  .logo-text {
-    font-size: 1.1rem;
-  }
-  .container {
-    padding: 0 1rem;
-  }
-  
-  .hero-content {
-    padding: 0 1rem;
-  }
-  
-  .hero-title {
-    font-size: clamp(2.2rem, 4vw, 2.5rem);
-  }
-  
-  .hero-subtitle {
-    font-size: 0.9rem;
-  }
-  
-  .section-title {
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  }
-  
-  .section-subtitle {
-    font-size: 0.9rem;
-  }
-  
-  .service-title {
-    font-size: 1.4rem;
-  }
-  
-  .service-description {
-    font-size: 0.85rem;
-  }
-  
-  .price-category-title {
-    font-size: 1.1rem;
-  }
-  
-  .price-service,
-  .price-amount {
-    font-size: 0.85rem;
-  }
-  
-  /* Page styles */
-  .page-header {
-    padding: 4rem 0 2rem;
-  }
-  
-  .page-title {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-  }
-  
-  .page-subtitle {
-    font-size: 1rem;
-  }
-  
-  /* Product styles */
-  .product-image {
-    height: 180px;
-  }
-  
-  .product-info {
-    padding: 1.25rem;
-  }
-  
-  .product-title {
-    font-size: 1rem;
-  }
-  
-  .product-description {
-    font-size: 0.85rem;
-  }
-  
-  .product-price {
-    font-size: 1.125rem;
-  }
-  
-  /* Promo styles */
-  .promo-features {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-  }
-  
-  .promo-product {
-    padding: 1.25rem 1.5rem;
-  }
-  
-  .promo-subtitle {
-    font-size: 1rem;
-  }
-  
-  /* Contact and footer */
-  .contact-box {
-    padding: 2rem 1.5rem;
-  }
-  
-  .footer-section {
-    max-width: 250px;
-    min-width: 200px;
-    margin: 0 15px 0 15px;
-  }
-  
-  .footer-title {
-    font-size: 1rem;
-  }
-  
-  .contact-item,
-  .hours-item {
-    font-size: 0.85rem;
-  }
-  
-  .service-card,
-  .price-category {
-    padding: 2rem 1.5rem;
-  }
-  
-  .cta-button {
-    padding: 0.875rem 2rem;
-    font-size: 1rem;
-  }
-}
-
-/* ===== ACCESSIBILITY ===== */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  .hero::before {
-    animation: none;
-  }
-}
-
-/* Focus styles for better accessibility */
-a:focus,
-button:focus {
-  outline: 2px solid var(--primary-gold);
-  outline-offset: 2px;
-}
-
-/* ===== PRODUCTS SECTION ===== */
-.products {
+/* ==========================================================================
+   8. HOMEPAGE - Hero Sectie
+   ========================================================================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: var(--section-padding);
-}
-
-/* Coming Soon Box */
-.coming-soon-box {
-  max-width: 700px;
-  margin: 0 auto;
-  background: var(--bg-light);
-  padding: 4rem 3rem;
-  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(13, 13, 13, 0.7) 0%, rgba(13, 13, 13, 0.75) 100%), 
+              url('../assets/kapsalon r.jpeg') center/cover no-repeat;
   text-align: center;
-  border: 1px solid var(--border-light);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
 }
 
-.coming-soon-icon {
-  width: 100px;
-  height: 100px;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   9. HOMEPAGE - Diensten Sectie
+   ========================================================================== */
+.services {
+  background: rgba(52, 52, 52, 0.5);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background: var(--bg-light);
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  border: 1px solid var(--border-light);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+  width: 80px;
+  height: 80px;
   background: linear-gradient(45deg, var(--primary-gold), var(--gold-light));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 2rem;
-  font-size: 2.5rem;
+  margin: 0 auto 1.5rem;
+  font-size: 2rem;
   color: white;
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
 }
 
-.coming-soon-title {
-  color: var(--primary-gold);
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  margin-bottom: 1.5rem;
+.service-title {
+  color: var(--text-dark);
+  margin-bottom: 1rem;
 }
 
-.coming-soon-text {
-  color: var(--text-light);
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 2rem;
-}
-
-.coming-soon-divider {
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    var(--primary-gold) 20%, 
-    var(--gold-light) 50%, 
-    var(--primary-gold) 80%, 
-    transparent 100%);
-  margin: 2rem auto;
-}
-
-.coming-soon-info {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  background: rgba(212, 175, 55, 0.1);
-  padding: 1.5rem 2rem;
-  border-radius: 12px;
-  border-left: 4px solid var(--primary-gold);
-  text-align: left;
-  margin-bottom: 2rem;
-}
-
-.coming-soon-info i {
-  color: var(--primary-gold);
-  font-size: 1.5rem;
-  margin-top: 0.25rem;
-}
-
-.coming-soon-info p {
+.service-description {
   color: var(--text-light);
   line-height: 1.7;
-  margin: 0;
 }
 
-.coming-soon-info strong {
-  color: var(--text-dark);
-}
-
-.coming-soon-location i {
-  color: var(--primary-gold);
-}
-
-@media (max-width: 600px) {
-  .coming-soon-box {
-    padding: 2.5rem 1.5rem;
-  }
-  
-  .coming-soon-icon {
-    width: 80px;
-    height: 80px;
-    font-size: 2rem;
-  }
-  
-  .coming-soon-info {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1.25rem 1.5rem;
-  }
-  
-  .coming-soon-text {
-    font-size: 1rem;
-  }
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 4rem;
-}
-
-.product-card {
-  background: var(--bg-light);
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  transition: var(--transition);
-  border: 1px solid var(--border-light);
-  display: flex;
-  flex-direction: column;
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.product-image {
-  width: 100%;
-  height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  background: #ffffff;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.product-img {
-  max-width: 80%;
-  max-height: 80%;
-  object-fit: contain;
-  transition: var(--transition);
-}
-
-.product-card:hover .product-img {
-  transform: scale(1.1);
-}
-
-.product-info {
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.product-title {
-  color: var(--text-dark);
-  margin-bottom: 0.75rem;
-  font-size: 1.125rem;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-.product-description {
-  color: var(--text-light);
-  line-height: 1.5;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  flex-grow: 1;
-}
-
-.product-price {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--primary-gold);
-  margin-top: auto;
-}
-
-/* Products Contact Section */
-.products-contact {
-  margin-top: 4rem;
-}
-
-.contact-box {
-  background: var(--bg-light-alt);
-  padding: 3rem 2rem;
-  border-radius: 15px;
+/* ==========================================================================
+   10. HOMEPAGE - Prijzen CTA Sectie
+   ========================================================================== */
+.prices-cta {
+  padding: var(--section-padding);
+  background: linear-gradient(145deg, #ffffff 0%, #e2c873 100%);
+  opacity: 0.8;
   text-align: center;
-  border: 1px solid var(--border-light);
 }
 
-.contact-box h3 {
-  color: var(--primary-gold);
+.prices-cta .cta-title {
+  color: #1a1a1a;
+}
+
+.prices-cta .cta-subtitle {
+  color: #4a4a4a;
+}
+
+.prices-cta .cta-note {
+  color: #666666;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  color: var(--text-dark);
   margin-bottom: 1rem;
 }
 
-.contact-box p {
+.cta-subtitle {
   color: var(--text-light);
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
 }
 
-.contact-buttons {
+.cta-highlights {
   display: flex;
-  gap: 1rem;
   justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
   flex-wrap: wrap;
 }
 
-/* Products Promotion Section */
+.cta-highlight {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #2c2c2c;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-radius: 50px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-light);
+}
+
+.cta-highlight i {
+  color: var(--primary-gold);
+  font-size: 1.1rem;
+}
+
+.cta-note {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   11. HOMEPAGE - Producten Promo Sectie
+   ========================================================================== */
 .products-promo {
   padding: var(--section-padding);
   background: rgba(52, 52, 52, 0.5);
@@ -1345,45 +889,9 @@ button:focus {
   font-weight: 500;
 }
 
-/* Products Responsive */
-@media (max-width: 768px) {
-  .products-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .contact-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .cta-button {
-    width: 100%;
-    max-width: 300px;
-    justify-content: center;
-  }
-  
-  .promo-content {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    text-align: center;
-  }
-  
-  .promo-features {
-    justify-content: center;
-  }
-  
-  .promo-products {
-    align-items: center;
-  }
-  
-  .promo-product {
-    max-width: 300px;
-    width: 100%;
-  }
-}
-
-/* ===== PRICES SECTION ===== */
+/* ==========================================================================
+   12. PRIJZEN PAGINA
+   ========================================================================== */
 .price-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1459,97 +967,203 @@ button:focus {
   font-size: 1rem;
 }
 
-/* Prices CTA Section */
-.prices-cta {
+/* ==========================================================================
+   13. PRODUCTEN PAGINA
+   ========================================================================== */
+.products {
   padding: var(--section-padding);
-  background: linear-gradient(145deg,#ffffff 0%, #e2c873 100%);
-  opacity: 0.8;
-  text-align: center;
-
 }
 
-.prices-cta .cta-title {
-  color: #1a1a1a;
-}
-
-.prices-cta .cta-subtitle {
-  color: #4a4a4a;
-}
-
-.prices-cta .cta-note {
-  color: #666666;
-}
-
-.cta-content {
-  max-width: 800px;
+/* Coming Soon Box */
+.coming-soon-box {
+  max-width: 700px;
   margin: 0 auto;
+  background: var(--bg-light);
+  padding: 4rem 3rem;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
-.cta-title {
-  color: var(--text-dark);
-  margin-bottom: 1rem;
-}
-
-.cta-subtitle {
-  color: var(--text-light);
-  margin-bottom: 3rem;
-  font-size: 1.1rem;
-}
-
-.cta-highlights {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-}
-
-.cta-highlight {
+.coming-soon-icon {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, var(--primary-gold), var(--gold-light));
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  color: #2c2c2c;
-  font-weight: 500;
-  padding: 1rem 1.5rem;
-  background: white;
-  border-radius: 50px;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  margin: 0 auto 2rem;
+  font-size: 2.5rem;
+  color: white;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.coming-soon-title {
+  color: var(--primary-gold);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin-bottom: 1.5rem;
+}
+
+.coming-soon-text {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.coming-soon-divider {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--primary-gold) 20%, 
+    var(--gold-light) 50%, 
+    var(--primary-gold) 80%, 
+    transparent 100%);
+  margin: 2rem auto;
+}
+
+.coming-soon-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(212, 175, 55, 0.1);
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-gold);
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.coming-soon-info i {
+  color: var(--primary-gold);
+  font-size: 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.coming-soon-info p {
+  color: var(--text-light);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.coming-soon-info strong {
+  color: var(--text-dark);
+}
+
+.coming-soon-location i {
+  color: var(--primary-gold);
+}
+
+/* Producten Grid (voor later gebruik) */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.product-card {
+  background: var(--bg-light);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.product-img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  transition: var(--transition);
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.1);
+}
+
+.product-info {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-title {
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.product-description {
+  color: var(--text-light);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  flex-grow: 1;
+}
+
+.product-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-gold);
+  margin-top: auto;
+}
+
+/* Producten Contact Box */
+.products-contact {
+  margin-top: 4rem;
+}
+
+.contact-box {
+  background: var(--bg-light-alt);
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  text-align: center;
   border: 1px solid var(--border-light);
 }
 
-.cta-highlight i {
+.contact-box h3 {
   color: var(--primary-gold);
-  font-size: 1.1rem;
+  margin-bottom: 1rem;
 }
 
-.cta-note {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  margin-top: 2rem;
-  font-style: italic;
+.contact-box p {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Prices Responsive */
-@media (max-width: 768px) {
-  .price-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .cta-highlights {
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-  }
-  
-  .cta-highlight {
-    max-width: 300px;
-    width: 100%;
-    justify-content: center;
-  }
-}
+/* ==========================================================================
+   14. UI ELEMENTEN
+   ========================================================================== */
 
-/* ===== UI ELEMENTS ===== */
+/* Scroll to Top Button */
 .scroll-to-top {
   position: fixed;
   bottom: 2rem;
@@ -1596,10 +1210,411 @@ button:focus {
   transform: translateY(-2px);
 }
 
-/* ===== RESPONSIVE FOR SMALL SCREENS (425px and smaller) ===== */
+/* ==========================================================================
+   15. RESPONSIVE - TABLET (max-width: 800px)
+   ========================================================================== */
+@media (max-width: 800px) {
+  /* Mobile Menu */
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .mobile-menu-close {
+    display: block;
+  }
+  
+  .nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100vh;
+    background: var(--bg-light);
+    border-right: 1px solid var(--border-light);
+    z-index: 1000;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav.active {
+    left: 0;
+  }
+  
+  .nav-list {
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+    padding: 80px 0 0 0;
+    height: 100%;
+  }
+  
+  .nav-link {
+    display: block;
+    padding: 1.2rem 2rem;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-dark);
+  }
+  
+  .nav-link::after {
+    display: none;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--primary-gold);
+  }
+  
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* ==========================================================================
+   16. RESPONSIVE - TABLET (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: var(--section-padding-mobile);
+  }
+  
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .service-title {
+    font-size: 1.4rem;
+  }
+  
+  .section-subtitle,
+  .page-subtitle,
+  .hero-subtitle,
+  .promo-subtitle,
+  .cta-subtitle {
+    font-size: 1rem;
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .contact-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+  
+  .promo-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .promo-features {
+    justify-content: center;
+  }
+  
+  .promo-products {
+    align-items: center;
+  }
+  
+  .promo-product {
+    max-width: 300px;
+    width: 100%;
+  }
+  
+  .price-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .cta-highlights {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  .cta-highlight {
+    max-width: 300px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   17. RESPONSIVE - TABLET PORTRAIT (max-width: 600px)
+   ========================================================================== */
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .footer-content {
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+  }
+  
+  .footer-section {
+    max-width: 350px;
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+  
+  .section-padding {
+    padding: 3rem 0;
+  }
+  
+  .promo-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .price-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .coming-soon-box {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .coming-soon-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+  
+  .coming-soon-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .coming-soon-text {
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================================================
+   18. RESPONSIVE - MOBILE (max-width: 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+  
+  .logo-text {
+    font-size: 1.1rem;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .hero-content {
+    padding: 0 1rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(2.2rem, 4vw, 2.5rem);
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .section-title {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  }
+  
+  .section-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .service-title {
+    font-size: 1.4rem;
+  }
+  
+  .service-description {
+    font-size: 0.85rem;
+  }
+  
+  .price-category-title {
+    font-size: 1.1rem;
+  }
+  
+  .price-service,
+  .price-amount {
+    font-size: 0.85rem;
+  }
+  
+  .page-header {
+    padding: 4rem 0 2rem;
+  }
+  
+  .page-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+  
+  .page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .product-image {
+    height: 180px;
+  }
+  
+  .product-info {
+    padding: 1.25rem;
+  }
+  
+  .product-title {
+    font-size: 1rem;
+  }
+  
+  .product-description {
+    font-size: 0.85rem;
+  }
+  
+  .product-price {
+    font-size: 1.125rem;
+  }
+  
+  .promo-features {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .promo-product {
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .promo-subtitle {
+    font-size: 1rem;
+  }
+  
+  .contact-box {
+    padding: 2rem 1.5rem;
+  }
+  
+  .footer-section {
+    max-width: 250px;
+    min-width: 200px;
+    margin: 0 15px 0 15px;
+  }
+  
+  .footer-title {
+    font-size: 1rem;
+  }
+  
+  .contact-item,
+  .hours-item {
+    font-size: 0.85rem;
+  }
+  
+  .service-card,
+  .price-category {
+    padding: 2rem 1.5rem;
+  }
+  
+  .cta-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================================================
+   19. RESPONSIVE - SMALL MOBILE (max-width: 425px)
+   ========================================================================== */
 @media (max-width: 425px) {
   h2 {
     font-size: 1.25rem !important;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .price-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .promo-subtitle {
+    font-size: 1rem;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 2rem;
+  }
+  
+  .footer-section {
+    flex: none;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .contact-item span,
+  .hours-item span {
+    text-align: left;
+  }
+  
+  .contact-item,
+  .hours-item {
+    justify-content: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  .hours-item {
+    justify-content: space-between;
   }
   
   .scroll-to-top {
@@ -1611,7 +1626,33 @@ button:focus {
   }
 }
 
-/* ===== PRINT STYLES ===== */
+/* ==========================================================================
+   20. ACCESSIBILITY
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .hero::before {
+    animation: none;
+  }
+}
+
+/* Focus styles voor toetsenbord navigatie */
+a:focus,
+button:focus {
+  outline: 2px solid var(--primary-gold);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   21. PRINT STYLES
+   ========================================================================== */
 @media print {
   .hero::before {
     display: none;
