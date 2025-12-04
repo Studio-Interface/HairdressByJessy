@@ -96,6 +96,28 @@
                         </div>
                     </div>
 
+                    <!-- Heren & Kinderen -->
+                    <div class="price-category">
+                        <h3 class="price-category-title">
+                            <i class="fas fa-users"></i>
+                            Heren
+                        </h3>
+                        <div class="price-list">
+                            <div class="price-item">
+                                <span class="price-service">Heren knippen</span>
+                                <span class="price-amount">€16,50</span>
+                            </div>
+                            <div class="price-item">
+                                <span class="price-service">Tondeuse</span>
+                                <span class="price-amount">€10,00</span>
+                            </div>
+                            <div class="price-item">
+                                <span class="price-service">Kinderen knippen t/m 12 jaar</span>
+                                <span class="price-amount">€11,50</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Kleuring -->
                     <div class="price-category">
                         <h3 class="price-category-title">
@@ -152,28 +174,6 @@
                             <div class="price-item">
                                 <span class="price-service">Folies 50 stuks</span>
                                 <span class="price-amount">€82,50</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Heren & Kinderen -->
-                    <div class="price-category">
-                        <h3 class="price-category-title">
-                            <i class="fas fa-users"></i>
-                            Heren & Kinderen
-                        </h3>
-                        <div class="price-list">
-                            <div class="price-item">
-                                <span class="price-service">Heren knippen</span>
-                                <span class="price-amount">€16,50</span>
-                            </div>
-                            <div class="price-item">
-                                <span class="price-service">Tondeuse</span>
-                                <span class="price-amount">€10,00</span>
-                            </div>
-                            <div class="price-item">
-                                <span class="price-service">Kinderen knippen t/m 12 jaar</span>
-                                <span class="price-amount">€11,50</span>
                             </div>
                         </div>
                     </div>
@@ -260,14 +260,14 @@
                         <h3>Maak een afspraak</h3>
                         <p>Bel of mail ons voor een afspraak. Wij adviseren je graag over de juiste behandeling voor jouw haar.</p>
                         <div class="contact-buttons">
-                            <a href="tel:0634609242" class="contact-btn">
-                                <i class="fas fa-phone"></i>
-                                06 34 60 92 42
-                            </a>
-                            <a href="mailto:info@hairdressbyjessy.nl" class="contact-btn">
-                                <i class="fas fa-envelope"></i>
-                                E-mail ons
-                            </a>
+                        <a href="tel:0634609242" class="cta-button">
+                            <i class="fas fa-phone"></i>
+                            Bel ons
+                        </a>
+                        <a href="#" data-whatsapp="afspraak" target="_blank" rel="noopener noreferrer" class="cta-button">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </a>
                         </div>
                     </div>
                 </div>
@@ -275,7 +275,7 @@
         </section>
     </main>
 
-    <footer id="contact" class="footer">
+<footer id="contact" class="footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h3 class="footer-title">Contact</h3>
@@ -307,36 +307,86 @@
             </div>
             <div class="footer-section">
                 <h3 class="footer-title">Openingstijden</h3>
-                <div class="opening-hours">
-                    <div class="hours-item">
-                        <span>Maandag</span>
-                        <span>Gesloten</span>
+                <div class="opening-hours-container">
+                    <div class="week-info">
+                        <span class="current-week-text">Huidige week:</span>
+                        <span class="current-week-number" id="currentWeekNumber">Week ##</span>
                     </div>
-                    <div class="hours-item">
-                        <span>Dinsdag</span>
-                        <span>9:00 - 17:30</span>
+                    
+                    <div class="week-tabs">
+                        <button class="week-tab" data-week="even" id="evenWeekTab">
+                            <span class="week-label">Even Weken</span>
+                        </button>
+                        <button class="week-tab" data-week="odd" id="oddWeekTab">
+                            <span class="week-label">Oneven Weken</span>
+                        </button>
                     </div>
-                    <div class="hours-item">
-                        <span>Woensdag</span>
-                        <span>9:00 - 12:00</span>
+                    
+                    <div class="opening-hours" id="evenWeekHours">
+                        <div class="hours-item weekend">
+                            <span>Maandag</span>
+                            <span>Gesloten</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Dinsdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Woensdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Donderdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Vrijdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item weekend">
+                            <span>Zaterdag</span>
+                            <span>Gesloten</span>
+                        </div>
+                        <div class="hours-item weekend">
+                            <span>Zondag</span>
+                            <span>Gesloten</span>
+                        </div>
                     </div>
-                    <div class="hours-item">
-                        <span>Donderdag</span>
-                        <span>9:00 - 17:30</span>
-                    </div>
-                    <div class="hours-item">
-                        <span>Vrijdag</span>
-                        <span>9:00 - 17:30</span>
-                    </div>
-                    <div class="hours-item">
-                        <span>Zaterdag - Zondag</span>
-                        <span>Gesloten</span>
+                    
+                    <div class="opening-hours" id="oddWeekHours" style="display: none;">
+                        <div class="hours-item weekend">
+                            <span>Maandag</span>
+                            <span>Gesloten</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Dinsdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Woensdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item weekend">
+                            <span>Donderdag</span>
+                            <span>Gesloten</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Vrijdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Zaterdag</span>
+                            <span>9:00 - 17:30</span>
+                        </div>
+                        <div class="hours-item weekend">
+                            <span>Zondag</span>
+                            <span>Gesloten</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-
     <script src="js/script.js"></script>
 </body>
 </html>

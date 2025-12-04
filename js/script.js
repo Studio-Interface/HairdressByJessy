@@ -1,3 +1,37 @@
+// ===== WHATSAPP CONFIGURATIE =====
+// Pas hier het telefoonnummer en berichten aan
+const WHATSAPP_CONFIG = {
+  phoneNumber: '31634609242', // Telefoonnummer zonder + of 0 (31 = Nederland)
+  messages: {
+    producten: 'Hallo, ik heb een vraag over de producten.',
+    afspraak: 'Hallo, ik wil graag een afspraak maken op ... om... .',
+  }
+};
+
+// Functie om WhatsApp link te genereren
+function getWhatsAppLink(messageType = 'algemeen') {
+  const message = WHATSAPP_CONFIG.messages[messageType] || WHATSAPP_CONFIG.messages.algemeen;
+  const encodedMessage = encodeURIComponent(message);
+  return `https://wa.me/${WHATSAPP_CONFIG.phoneNumber}?text=${encodedMessage}`;
+}
+
+// ===== WHATSAPP LINKS INITIALISATIE =====
+class WhatsAppLinksManager {
+  constructor() {
+    this.init();
+  }
+  
+  init() {
+    // Zoek alle links met data-whatsapp attribuut
+    const whatsappLinks = document.querySelectorAll('a[data-whatsapp]');
+    
+    whatsappLinks.forEach(link => {
+      const messageType = link.getAttribute('data-whatsapp');
+      link.href = getWhatsAppLink(messageType);
+    });
+  }
+}
+
 // ===== MOBILE NAVIGATION =====
 class MobileNavigation {
   constructor() {
@@ -492,6 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
   new AccessibilityEnhancer();
   new ScrollToTop();
   new OpeningHoursManager();
+  new WhatsAppLinksManager();
   
   // Add loading animation
   document.body.classList.add('loaded');
@@ -524,17 +559,3 @@ document.head.appendChild(styleSheet);
 window.addEventListener('error', (e) => {
   console.error('JavaScript error:', e.error);
 });
-
-// ===== SERVICE WORKER REGISTRATION (Optional) =====
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    // Uncomment if you want to add PWA functionality
-    // navigator.serviceWorker.register('/sw.js')
-    //   .then((registration) => {
-    //     console.log('SW registered: ', registration);
-    //   })
-    //   .catch((registrationError) => {
-    //     console.log('SW registration failed: ', registrationError);
-    //   });
-  });
-}

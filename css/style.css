@@ -43,8 +43,83 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: var(--text-dark);
-  background-color: var(--bg-light);
+  background-color: #0d0d0d;
   transition: var(--transition);
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    /* Hoofdader - dik goud diagonaal */
+    linear-gradient(115deg,
+      transparent 0%,
+      transparent 42%,
+      rgba(212, 175, 55, 0.25) 43%,
+      rgba(229, 197, 87, 0.35) 44%,
+      rgba(212, 175, 55, 0.2) 45%,
+      transparent 46%,
+      transparent 100%
+    ),
+    /* Secundaire ader */
+    linear-gradient(105deg,
+      transparent 0%,
+      transparent 18%,
+      rgba(212, 175, 55, 0.15) 19%,
+      rgba(229, 197, 87, 0.2) 19.5%,
+      rgba(212, 175, 55, 0.12) 20%,
+      transparent 21%,
+      transparent 65%,
+      rgba(212, 175, 55, 0.18) 66%,
+      rgba(184, 148, 31, 0.22) 67%,
+      rgba(212, 175, 55, 0.1) 68%,
+      transparent 69%,
+      transparent 100%
+    ),
+    /* Dunne aders */
+    linear-gradient(125deg,
+      transparent 0%,
+      transparent 30%,
+      rgba(229, 197, 87, 0.1) 30.5%,
+      transparent 31%,
+      transparent 55%,
+      rgba(212, 175, 55, 0.08) 55.5%,
+      transparent 56%,
+      transparent 78%,
+      rgba(229, 197, 87, 0.12) 78.5%,
+      transparent 79%,
+      transparent 100%
+    ),
+    /* Grijze marmer aders voor diepte */
+    linear-gradient(100deg,
+      transparent 0%,
+      transparent 25%,
+      rgba(60, 60, 60, 0.4) 26%,
+      rgba(80, 80, 80, 0.3) 27%,
+      transparent 28%,
+      transparent 52%,
+      rgba(70, 70, 70, 0.35) 53%,
+      rgba(50, 50, 50, 0.25) 54%,
+      transparent 55%,
+      transparent 100%
+    ),
+    /* Organische gouden gloed */
+    radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 60%, rgba(229, 197, 87, 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
+  background-color: #0d0d0d;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 .container {
@@ -76,9 +151,10 @@ a {
 }
 
 /* ===== BUTTONS ===== */
-.cta-button,
-.promo-btn {
-  display: inline-block;
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   background: linear-gradient(45deg, var(--primary-gold) 0%, var(--gold-light) 100%);
   color: white;
   padding: 1rem 2.5rem;
@@ -91,6 +167,7 @@ a {
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .cta-button::before {
@@ -104,8 +181,7 @@ a {
   transition: var(--transition);
 }
 
-.cta-button:hover,
-.promo-btn:hover {
+.cta-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
 }
@@ -114,50 +190,47 @@ a {
   left: 100%;
 }
 
-.promo-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.2rem 2.5rem;
-  text-decoration: none;
-}
-
-.promo-btn i {
+.cta-button i {
+  font-size: 1rem;
   transition: var(--transition);
 }
 
-.promo-btn:hover i {
-  transform: translateX(5px);
-}
-
-.contact-btn {
+/* Outline/Ghost Button */
+.cta-button-outline {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(45deg, var(--primary-gold), var(--gold-light));
-  color: white;
-  padding: 1rem 2rem;
+  background: transparent;
+  color: var(--primary-gold);
+  padding: 0.75rem 1.5rem;
   border-radius: 50px;
-  font-weight: 600;
-  text-decoration: none;
+  border: 2px solid var(--primary-gold);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
   transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  text-decoration: none;
+  margin-top: 2.5rem;
 }
 
-.contact-btn:hover {
+.cta-button-outline:hover {
+  background: var(--primary-gold);
+  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
 }
 
-.contact-btn i {
-  font-size: 1rem;
+.cta-button-outline i {
+  font-size: 0.9rem;
 }
 
 
 /* ===== HEADER & NAVIGATION ===== */
 .header {
-  background: var(--bg-light);
-  border-bottom: 1px solid var(--border-light);
+  background: rgba(31, 31, 31, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--primary-gold);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -378,7 +451,13 @@ section {
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: var(--primary-gold);
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--primary-gold) 20%, 
+    var(--gold-light) 50%, 
+    var(--primary-gold) 80%, 
+    transparent 100%);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
 }
 
 .section-subtitle {
@@ -389,8 +468,13 @@ section {
 /* Page Header (for subpages) */
 .page-header {
   padding: 6rem 0 4rem;
-  background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-light-alt) 100%);
+  background: 
+    linear-gradient(135deg, rgba(31, 31, 31, 0.95) 0%, rgba(52, 52, 52, 0.9) 100%),
+    radial-gradient(ellipse at top, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .page-title {
@@ -409,27 +493,16 @@ section {
 
 /* ===== HERO SECTION ===== */
 .hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: var(--section-padding);
-  background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-light-alt) 100%);
+  background: linear-gradient(135deg, rgba(13, 13, 13, 0.7) 0%, rgba(13, 13, 13, 0.75) 100%), 
+              url('../assets/kapsalon r.jpeg') center/cover no-repeat;
   text-align: center;
   position: relative;
   overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
-  animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .hero-content {
@@ -456,7 +529,7 @@ section {
 
 /* ===== SERVICES SECTION ===== */
 .services {
-  background: var(--bg-light-alt);
+  background: rgba(52, 52, 52, 0.5);
 }
 
 .services-grid {
@@ -508,7 +581,7 @@ section {
   background: #2d2d2d;
   color: white;
   padding: 3rem 4rem 1rem;
-  border-top: 1px solid var(--primary-gold);
+  border-top: 0.5px solid var(--primary-gold);
 }
 
 .footer-content {
@@ -539,6 +612,7 @@ section {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .contact-item i {
@@ -550,7 +624,7 @@ section {
 
 /* Social Links */
 .socials {
-  margin-top: 1.5rem;
+  margin-top: 4rem;
 }
 
 .social-links {
@@ -618,6 +692,7 @@ section {
   cursor: pointer;
   transition: var(--transition);
   text-align: center;
+  color: var(--text-light);
 }
 
 .week-tab:hover {
@@ -889,11 +964,6 @@ section {
     align-items: center;
   }
   
-  .promo-btn {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-  }
-  
   .promo-product {
     padding: 1.25rem 1.5rem;
   }
@@ -958,6 +1028,112 @@ button:focus {
 /* ===== PRODUCTS SECTION ===== */
 .products {
   padding: var(--section-padding);
+}
+
+/* Coming Soon Box */
+.coming-soon-box {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--bg-light);
+  padding: 4rem 3rem;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.coming-soon-icon {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, var(--primary-gold), var(--gold-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  font-size: 2.5rem;
+  color: white;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.coming-soon-title {
+  color: var(--primary-gold);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin-bottom: 1.5rem;
+}
+
+.coming-soon-text {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.coming-soon-divider {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--primary-gold) 20%, 
+    var(--gold-light) 50%, 
+    var(--primary-gold) 80%, 
+    transparent 100%);
+  margin: 2rem auto;
+}
+
+.coming-soon-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(212, 175, 55, 0.1);
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-gold);
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.coming-soon-info i {
+  color: var(--primary-gold);
+  font-size: 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.coming-soon-info p {
+  color: var(--text-light);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.coming-soon-info strong {
+  color: var(--text-dark);
+}
+
+.coming-soon-location i {
+  color: var(--primary-gold);
+}
+
+@media (max-width: 600px) {
+  .coming-soon-box {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .coming-soon-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+  
+  .coming-soon-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .coming-soon-text {
+    font-size: 1rem;
+  }
 }
 
 .products-grid {
@@ -1071,7 +1247,7 @@ button:focus {
 /* Products Promotion Section */
 .products-promo {
   padding: var(--section-padding);
-  background: linear-gradient(135deg, var(--bg-light-alt) 0%, var(--bg-light) 100%);
+  background: rgba(52, 52, 52, 0.5);
   position: relative;
   overflow: hidden;
 }
@@ -1083,7 +1259,6 @@ button:focus {
   right: -20%;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
   border-radius: 50%;
 }
 
@@ -1159,11 +1334,6 @@ button:focus {
   transition: var(--transition);
 }
 
-.promo-product:hover {
-  transform: translateX(10px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-
 .promo-product i {
   font-size: 1.5rem;
   color: var(--primary-gold);
@@ -1187,7 +1357,7 @@ button:focus {
     align-items: center;
   }
   
-  .contact-btn {
+  .cta-button {
     width: 100%;
     max-width: 300px;
     justify-content: center;
@@ -1292,8 +1462,22 @@ button:focus {
 /* Prices CTA Section */
 .prices-cta {
   padding: var(--section-padding);
-  background: var(--bg-light-alt);
+  background: linear-gradient(145deg,#ffffff 0%, #e2c873 100%);
+  opacity: 0.8;
   text-align: center;
+
+}
+
+.prices-cta .cta-title {
+  color: #1a1a1a;
+}
+
+.prices-cta .cta-subtitle {
+  color: #4a4a4a;
+}
+
+.prices-cta .cta-note {
+  color: #666666;
 }
 
 .cta-content {
