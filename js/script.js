@@ -135,7 +135,7 @@ class SmoothScrolling {
           const targetSection = document.querySelector(targetId);
           
           if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 80; // Account for sticky header
+            const offsetTop = targetSection.offsetTop; // Account for sticky header
             window.scrollTo({
               top: offsetTop,
               behavior: 'smooth'
@@ -257,7 +257,7 @@ class ContactEnhancement {
           // Scroll to contact section
           const contactSection = document.querySelector('#contact');
           if (contactSection) {
-            const offsetTop = contactSection.offsetTop - 80;
+            const offsetTop = contactSection.offsetTop - 110;
             window.scrollTo({
               top: offsetTop,
               behavior: 'smooth'

@@ -47,6 +47,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section {
+  scroll-margin-top: 110px;
+}
+
 
 body {
   font-family: var(--font-body);
@@ -1215,7 +1219,7 @@ section {
 /* ==========================================================================
    15. RESPONSIVE - TABLET (max-width: 800px)
    ========================================================================== */
-@media (max-width: 800px) {
+@media (max-width: 840px) {
   /* Mobile Menu */
   .mobile-menu-toggle {
     display: flex;
@@ -1382,12 +1386,24 @@ section {
   }
   
   .footer-content {
-    gap: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
     padding: 0 1.5rem;
   }
   
   .footer-section {
     max-width: 350px;
+    width: 100%;
+  }
+  
+  .contact-item {
+    justify-content: center;
+  }
+  
+  .social-links {
+    justify-content: center;
   }
   
   .hero-title {
@@ -1570,7 +1586,7 @@ section {
    ========================================================================== */
 @media (max-width: 425px) {
   h2 {
-    font-size: 1.25rem !important;
+    font-size: 1.5rem !important;
   }
   
   .services-grid {
@@ -1625,6 +1641,11 @@ section {
     width: 45px;
     height: 45px;
     font-size: 1.1rem;
+  }
+  
+  .cta-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
   }
 }
 
