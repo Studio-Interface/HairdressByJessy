@@ -727,7 +727,7 @@ section {
 .prices-cta {
   padding: var(--section-padding);
   background: linear-gradient(145deg, #ffffff 0%, #e2c873 100%);
-  opacity: 0.8;
+  /* opacity: 0.9; */
   text-align: center;
 }
 
