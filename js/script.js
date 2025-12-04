@@ -119,7 +119,6 @@ class SmoothScrolling {
   constructor() {
     this.navLinks = document.querySelectorAll('.nav-link');
     this.sections = document.querySelectorAll('section[id]');
-    this.headerHeight = 100; // Sticky header offset
     
     this.init();
   }
@@ -133,7 +132,15 @@ class SmoothScrolling {
         // Only prevent default for internal links (starting with #)
         if (targetId.startsWith('#')) {
           e.preventDefault();
-          this.smoothScrollTo(targetId);
+          const targetSection = document.querySelector(targetId);
+          
+          if (targetSection) {
+            const offsetTop = targetSection.offsetTop - 80; // Account for sticky header
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
         }
         // External links (like producten.html) will work normally
       });
@@ -141,57 +148,6 @@ class SmoothScrolling {
     
     // Update active nav link on scroll
     window.addEventListener('scroll', () => this.updateActiveNav());
-  }
-  
-  // Safari-compatible smooth scroll functie
-  smoothScrollTo(targetId) {
-    const targetSection = document.querySelector(targetId);
-    if (!targetSection) return;
-    
-    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - this.headerHeight;
-    
-    // Check of native smooth scroll ondersteund wordt EN werkt (Safari issue)
-    const supportsNativeSmoothScroll = 'scrollBehavior' in document.documentElement.style;
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    
-    // Safari heeft problemen met smooth scroll naar footer elementen, dus gebruik altijd JS fallback
-    if (isSafari || !supportsNativeSmoothScroll) {
-      this.animateScroll(targetPosition);
-    } else {
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }
-  }
-  
-  // Gegarandeerde smooth scroll animatie (fallback)
-  animateScroll(targetPosition, duration = 800) {
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-    
-    // Easing functie voor vloeiende animatie
-    const easeInOutCubic = (t) => {
-      return t < 0.5 
-        ? 4 * t * t * t 
-        : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    };
-    
-    const animation = (currentTime) => {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const easedProgress = easeInOutCubic(progress);
-      
-      window.scrollTo(0, startPosition + (distance * easedProgress));
-      
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animation);
-      }
-    };
-    
-    requestAnimationFrame(animation);
   }
   
   updateActiveNav() {
@@ -278,7 +234,6 @@ class HeaderScrollEffect {
 class ContactEnhancement {
   constructor() {
     this.ctaButtons = document.querySelectorAll('.cta-button');
-    this.headerHeight = 100;
     
     this.init();
   }
@@ -302,54 +257,16 @@ class ContactEnhancement {
           // Scroll to contact section
           const contactSection = document.querySelector('#contact');
           if (contactSection) {
-            this.smoothScrollTo(contactSection);
+            const offsetTop = contactSection.offsetTop - 80;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
           }
         }
         // External links (like prijzen.html, producten.html) will navigate normally
       });
     });
-  }
-  
-  // Safari-compatible smooth scroll
-  smoothScrollTo(target) {
-    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - this.headerHeight;
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    
-    if (isSafari) {
-      this.animateScroll(targetPosition);
-    } else {
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }
-  }
-  
-  animateScroll(targetPosition, duration = 800) {
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-    
-    const easeInOutCubic = (t) => {
-      return t < 0.5 
-        ? 4 * t * t * t 
-        : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    };
-    
-    const animation = (currentTime) => {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const easedProgress = easeInOutCubic(progress);
-      
-      window.scrollTo(0, startPosition + (distance * easedProgress));
-      
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animation);
-      }
-    };
-    
-    requestAnimationFrame(animation);
   }
 }
 
@@ -518,44 +435,11 @@ class ScrollToTop {
       this.button.style.transform = '';
     }, 150);
     
-    // Safari-compatible smooth scroll to top
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    
-    if (isSafari) {
-      this.animateScroll(0);
-    } else {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-  }
-  
-  animateScroll(targetPosition, duration = 800) {
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-    
-    const easeInOutCubic = (t) => {
-      return t < 0.5 
-        ? 4 * t * t * t 
-        : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    };
-    
-    const animation = (currentTime) => {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const easedProgress = easeInOutCubic(progress);
-      
-      window.scrollTo(0, startPosition + (distance * easedProgress));
-      
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animation);
-      }
-    };
-    
-    requestAnimationFrame(animation);
+    // Smooth scroll to top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 }
 
@@ -675,62 +559,4 @@ document.head.appendChild(styleSheet);
 window.addEventListener('error', (e) => {
   console.error('JavaScript error:', e.error);
 });
-
-// ===== UNIVERSAL SMOOTH SCROLL (Safari-compatible) =====
-// Vervangt de native a[href^="#"] scroll met een gegarandeerde smooth scroll
-(function() {
-  const headerHeight = 100;
-  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-  
-  function animateScroll(targetPosition, duration = 800) {
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-    
-    const easeInOutCubic = (t) => {
-      return t < 0.5 
-        ? 4 * t * t * t 
-        : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    };
-    
-    const animation = (currentTime) => {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const easedProgress = easeInOutCubic(progress);
-      
-      window.scrollTo(0, startPosition + (distance * easedProgress));
-      
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animation);
-      }
-    };
-    
-    requestAnimationFrame(animation);
-  }
-  
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href').substring(1);
-      const target = document.getElementById(targetId);
-      
-      if (!target) return;
-      
-      e.preventDefault();
-      
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-      
-      // Gebruik altijd JS animatie voor Safari, anders native smooth scroll
-      if (isSafari) {
-        animateScroll(targetPosition);
-      } else {
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-})();
-
 
