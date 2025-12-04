@@ -559,3 +559,5 @@ document.head.appendChild(styleSheet);
 window.addEventListener('error', (e) => {
   console.error('JavaScript error:', e.error);
 });
+console.log("✅ script.js is geladen");
+
