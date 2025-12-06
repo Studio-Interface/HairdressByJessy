@@ -253,6 +253,11 @@ a {
   flex-wrap: wrap;
 }
 
+.contact-buttons .cta-button {
+  min-width: 220px;
+  justify-content: center;
+}
+
 
 /* ==========================================================================
    5. HEADER & NAVIGATIE (Alle pagina's)
@@ -636,7 +641,7 @@ section {
    8. HOMEPAGE - Hero Sectie
    ========================================================================== */
 .hero {
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -656,11 +661,11 @@ section {
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.75rem, 5vw, 4rem);
   font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 1.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 4rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 .hero-subtitle {
@@ -1303,9 +1308,12 @@ section {
   }
   
   h2 {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
   }
   
+  h3 {
+    font-size: 1rem;
+  }
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
@@ -1334,8 +1342,7 @@ section {
   }
   
   .cta-button {
-    width: 100%;
-    max-width: 300px;
+    padding: 0.875rem 3rem;
     justify-content: center;
   }
   
@@ -1377,14 +1384,9 @@ section {
 }
 
 /* ==========================================================================
-   17. RESPONSIVE - TABLET PORTRAIT (max-width: 600px)
+   RESPONSIVE - FOOTER STACKING (max-width: 660px)
    ========================================================================== */
-@media (max-width: 600px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
+@media (max-width: 660px) {
   .footer-content {
     flex-direction: column;
     align-items: center;
@@ -1394,20 +1396,37 @@ section {
   }
   
   .footer-section {
-    max-width: 350px;
+    max-width: 400px;
     width: 100%;
   }
   
+  .contact-items-wrapper {
+    display: inline-block;
+    text-align: left;
+  }
+  
   .contact-item {
-    justify-content: center;
+    justify-content: flex-start;
   }
   
   .social-links {
     justify-content: center;
+    margin-bottom: 2rem;
+  }
+}
+
+/* ==========================================================================
+   17. RESPONSIVE - TABLET PORTRAIT (max-width: 600px)
+   ========================================================================== */
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   .hero-title {
-    font-size: clamp(2rem, 5vw, 3rem);
+    /* font-size: clamp(2.5rem, 5vw, 3rem); */
+    font-size: 2rem
   }
   
   .section-padding {
@@ -1473,7 +1492,7 @@ section {
   }
   
   .hero-title {
-    font-size: clamp(2.2rem, 4vw, 2.5rem);
+    font-size: clamp(2.25rem, 4vw, 2.75rem);
   }
   
   .hero-subtitle {
@@ -1562,7 +1581,7 @@ section {
   }
   
   .footer-title {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   
   .contact-item,
@@ -1576,7 +1595,11 @@ section {
   }
   
   .cta-button {
-    padding: 0.875rem 2rem;
+    padding: 0.875rem 2.5rem;
+    font-size: 1rem;
+  }
+  .cta-button-outline {
+    padding: 0.75rem 3rem;
     font-size: 1rem;
   }
 }
@@ -1587,6 +1610,13 @@ section {
 @media (max-width: 425px) {
   h2 {
     font-size: 1.5rem !important;
+  }
+  p {
+    font-size: 0.9rem !important;
+  }
+
+  .hero-title {
+    font-size: 2.25rem !important;
   }
   
   .services-grid {
@@ -1617,12 +1647,20 @@ section {
     width: 100%;
   }
   
+  .contact-items-wrapper {
+    display: inline-block;
+    text-align: left;
+  }
+  
   .contact-item span,
   .hours-item span {
     text-align: left;
   }
   
-  .contact-item,
+  .contact-item {
+    justify-content: flex-start;
+  }
+  
   .hours-item {
     justify-content: center;
   }
@@ -1645,7 +1683,11 @@ section {
   
   .cta-button {
     padding: 0.875rem 2rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
+  }
+  .cta-button-outline {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -1689,4 +1731,8 @@ button:focus {
   .cta-button {
     border: 2px solid black;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
