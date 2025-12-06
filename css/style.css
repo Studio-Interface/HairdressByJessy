@@ -1403,6 +1403,7 @@ section {
   .contact-items-wrapper {
     display: inline-block;
     text-align: left;
+    padding-left: 2rem;
   }
   
   .contact-item {
@@ -1591,7 +1592,7 @@ section {
   
   .service-card,
   .price-category {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.3rem;
   }
   
   .cta-button {
@@ -1650,6 +1651,7 @@ section {
   .contact-items-wrapper {
     display: inline-block;
     text-align: left;
+    padding-left: 1.3rem;
   }
   
   .contact-item span,
