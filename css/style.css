@@ -216,6 +216,25 @@ a {
   transition: var(--transition);
 }
 
+/* Telefoonnummer in knop - verborgen op mobiel, getoond op desktop */
+.tel {
+  display: none;
+}
+
+.bel-tekst {
+  display: inline;
+}
+
+@media (min-width: 661px) {
+  .tel {
+    display: inline;
+  }
+  
+  .bel-tekst {
+    display: none;
+  }
+}
+
 /* Outline/Ghost Button */
 .cta-button-outline {
   display: inline-flex;
@@ -1592,7 +1611,7 @@ section {
   
   .service-card,
   .price-category {
-    padding: 2rem 1.3rem;
+    padding: 2rem 1.3rem; 
   }
   
   .cta-button {
