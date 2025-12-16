@@ -667,7 +667,7 @@ section {
   justify-content: center;
   padding: var(--section-padding);
   background: linear-gradient(135deg, rgba(13, 13, 13, 0.7) 0%, rgba(13, 13, 13, 0.75) 100%), 
-              url('../assets/kapsalon r.jpeg') center/cover no-repeat;
+              url('../assets/kapsalon.jpeg') center/cover no-repeat;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1596,8 +1596,8 @@ section {
   }
   
   .footer-section {
-    max-width: 250px;
-    min-width: 200px;
+    max-width: 350px;
+    min-width: 250px;
     margin: 0 15px 0 15px;
   }
   
