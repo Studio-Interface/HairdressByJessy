@@ -24,6 +24,30 @@
 </head>
 
 <body>
+
+    <!-- Prijzen popup -->
+    <div class="popup-overlay" id="prijzenPopup">
+        <div class="popup-box">
+            <button class="popup-close" id="popupClose" aria-label="Popup sluiten">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="popup-icon">
+                <i class="fas fa-tag"></i>
+            </div>
+            <h2 class="popup-title">Prijswijziging per 1 juni 2026</h2>
+            <p class="popup-text">Vanaf <strong>1 juni 2026</strong> hanteren wij nieuwe tarieven. Bekijk alvast onze huidige prijslijst voor alle diensten en behandelingen.</p>
+            <div class="popup-buttons">
+                <a href="prijzen.html" class="cta-button">
+                    <i class="fas fa-arrow-right"></i>
+                    Bekijk prijslijst
+                </a>
+                <button class="cta-button-outline popup-dismiss" id="popupDismiss">
+                    Sluiten
+                </button>
+            </div>
+        </div>
+    </div>
+
     <header class="header">
         <div class="container">
             <a href="index.html" class="logo">
@@ -61,7 +85,7 @@
         <section id="home" class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h2 class="hero-title">Jouw haar, jouw stijl</h2>
+                    <h2 class="hero-title">Jouw Haar,<br class="title-break">Jouw Stijl</h2>
                     <p class="hero-subtitle">Ontdek je perfecte look bij Hairdress By Jessy. Professionele kapsels, kleuring en styling in een luxueuze en ontspannen sfeer.<br><br>Maak uw afspraak telefonisch of via WhatsApp</p>
                     <div class="contact-buttons">
                     <a href="tel:0634609242" class="cta-button">
@@ -234,7 +258,7 @@
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>06 34 60 92 42</span>
+                            <a href="tel:0634609242"><span>06 34 60 92 42</span></a>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>

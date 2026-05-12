@@ -514,6 +514,76 @@ class OpeningHoursManager {
   }
 }
 
+// ===== PAGE TRANSITIONS =====
+class PageTransitions {
+  constructor() {
+    this.duration = 250;
+    this.init();
+  }
+
+  isInternalPage(href) {
+    if (!href) return false;
+    if (href.startsWith('#') || href.startsWith('tel:') || href.startsWith('mailto:') || href.startsWith('http')) return false;
+    return href.endsWith('.html') || href === '/' || href === './';
+  }
+
+  init() {
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href]');
+      if (!link || link.target === '_blank') return;
+      if (!this.isInternalPage(link.getAttribute('href'))) return;
+
+      e.preventDefault();
+      const href = link.getAttribute('href');
+      document.body.classList.add('page-exit');
+      setTimeout(() => { window.location.href = href; }, this.duration);
+    });
+  }
+}
+
+// ===== POPUP MANAGER =====
+class PopupManager {
+  constructor() {
+    this.overlay = document.getElementById('prijzenPopup');
+    if (!this.overlay) return;
+
+    if (sessionStorage.getItem('popupGetoond')) {
+      this.overlay.classList.add('hidden');
+      return;
+    }
+
+    this.init();
+  }
+
+  show() {
+    setTimeout(() => {
+      this.overlay.classList.add('visible');
+    }, 300);
+  }
+
+  close() {
+    this.overlay.classList.remove('visible');
+    setTimeout(() => {
+      this.overlay.classList.add('hidden');
+    }, 400);
+    sessionStorage.setItem('popupGetoond', '1');
+  }
+
+  init() {
+    this.show();
+    document.getElementById('popupClose').addEventListener('click', () => this.close());
+    document.getElementById('popupDismiss').addEventListener('click', () => this.close());
+
+    this.overlay.addEventListener('click', (e) => {
+      if (e.target === this.overlay) this.close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') this.close();
+    });
+  }
+}
+
 // ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all components
@@ -527,7 +597,22 @@ document.addEventListener('DOMContentLoaded', () => {
   new ScrollToTop();
   new OpeningHoursManager();
   new WhatsAppLinksManager();
-  
+  new PageTransitions();
+  new PopupManager();
+
+  // Zet actieve nav link op basis van huidige pagina
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-link').forEach(link => {
+    const linkPage = link.getAttribute('href').split('/').pop().split('#')[0];
+    if (linkPage === currentPage) {
+      link.classList.add('active');
+    } else if (currentPage === '' || currentPage === 'index.html') {
+      // Op de homepagina regelt de scroll-gebaseerde logica de actieve staat
+    } else {
+      link.classList.remove('active');
+    }
+  });
+
   // Add loading animation
   document.body.classList.add('loaded');
 });
@@ -538,12 +623,18 @@ const loadingStyles = `
   body:not(.loaded) {
     opacity: 0;
   }
-  
+
   body.loaded {
     opacity: 1;
     transition: opacity 0.3s ease;
   }
-  
+
+  body.page-exit {
+    opacity: 0 !important;
+    pointer-events: none;
+    transition: opacity 0.25s ease !important;
+  }
+
   .keyboard-navigation *:focus {
     outline: 2px solid var(--primary-gold) !important;
     outline-offset: 2px !important;

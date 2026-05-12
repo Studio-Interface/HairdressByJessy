@@ -678,14 +678,31 @@ section {
   z-index: 2;
   max-width: 600px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-title {
-  font-size: clamp(2.75rem, 5vw, 4rem);
+  font-size: clamp(3rem, 6vw, 4.75rem);
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: 4rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.title-break {
+  display: block;
+}
+
+@media (min-width: 450px) {
+  .title-break {
+    display: none;
+  }
+
+  .hero-title {
+    white-space: nowrap;
+  }
 }
 
 .hero-subtitle {
@@ -996,6 +1013,28 @@ section {
   font-weight: 500;
   margin-top: 1rem;
   font-size: 1rem;
+}
+
+.price-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 6px;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.price-notice i {
+  color: var(--primary-gold);
+  flex-shrink: 0;
+}
+
+.price-notice strong {
+  color: var(--primary-gold);
 }
 
 /* ==========================================================================
@@ -1446,8 +1485,7 @@ section {
   }
   
   .hero-title {
-    /* font-size: clamp(2.5rem, 5vw, 3rem); */
-    font-size: 2rem
+    font-size: 2.5rem;
   }
   
   .section-padding {
@@ -1757,4 +1795,141 @@ button:focus {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   POPUP - NIEUWE PRIJZEN
+   ========================================================================== */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.75rem, 4vw, 1.5rem);
+  padding-top: clamp(5rem, 12vh, 8rem);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.popup-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-overlay.hidden {
+  display: none;
+}
+
+.popup-box {
+  position: relative;
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: clamp(1.25rem, 5vw, 3rem) clamp(1rem, 4vw, 2.5rem);
+  padding-top: clamp(2rem, 6vw, 3rem);
+  max-width: 480px;
+  width: 100%;
+  max-height: 90dvh;
+  overflow-y: auto;
+  text-align: center;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(212, 175, 55, 0.15),
+    inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
+}
+
+.popup-overlay.visible .popup-box {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.popup-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: var(--bg-light-alt);
+  border: 1px solid var(--border-light);
+  color: var(--text-light);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.popup-close:hover {
+  background: var(--primary-gold);
+  color: white;
+  border-color: var(--primary-gold);
+}
+
+.popup-icon {
+  width: clamp(44px, 10vw, 64px);
+  height: clamp(44px, 10vw, 64px);
+  background: linear-gradient(45deg, var(--primary-gold), var(--gold-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto clamp(0.75rem, 3vw, 1.5rem);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+}
+
+.popup-icon i {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: white;
+}
+
+.popup-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 5vw, 2rem);
+  color: var(--text-dark);
+  margin-bottom: 0.6rem;
+}
+
+.popup-text {
+  color: var(--text-light);
+  font-size: clamp(0.875rem, 3vw, 1rem);
+  line-height: 1.65;
+  margin-bottom: clamp(1.25rem, 4vw, 1.75rem);
+}
+
+.popup-text strong {
+  color: var(--primary-gold);
+  font-weight: 600;
+}
+
+.popup-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.popup-buttons .cta-button {
+  width: 100%;
+  justify-content: center;
+  font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+  padding: clamp(0.65rem, 2vw, 1rem) clamp(1rem, 3vw, 2.5rem);
+}
+
+.popup-dismiss {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 2.5vw, 0.95rem);
 }
