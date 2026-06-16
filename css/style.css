@@ -627,6 +627,36 @@ section {
   opacity: 0.9;
 }
 
+.vacation-tabs-group {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.vacation-tabs-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 0.4rem;
+}
+
+.week-tabs--vacation {
+  margin-bottom: 0;
+}
+
+.week-tab--vacation {
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.week-tab--vacation.active {
+  background: var(--primary-gold);
+  border-color: var(--primary-gold);
+}
+
+#jamillaTab {
+  max-width: 100%;
+}
+
 .opening-hours {
   display: flex;
   flex-direction: column;
@@ -1798,7 +1828,7 @@ html {
 }
 
 /* ==========================================================================
-   POPUP - NIEUWE PRIJZEN
+   POPUP
    ========================================================================== */
 .popup-overlay {
   position: fixed;
@@ -1832,7 +1862,7 @@ html {
   border-radius: 16px;
   padding: clamp(1.25rem, 5vw, 3rem) clamp(1rem, 4vw, 2.5rem);
   padding-top: clamp(2rem, 6vw, 3rem);
-  max-width: 480px;
+  max-width: 600px;
   width: 100%;
   max-height: 90dvh;
   overflow-y: auto;
@@ -1897,14 +1927,14 @@ html {
   font-family: var(--font-heading);
   font-size: clamp(1.25rem, 5vw, 2rem);
   color: var(--text-dark);
-  margin-bottom: 0.6rem;
+  margin-bottom: 2rem;
 }
 
 .popup-text {
   color: var(--text-light);
   font-size: clamp(0.875rem, 3vw, 1rem);
   line-height: 1.65;
-  margin-bottom: clamp(1.25rem, 4vw, 1.75rem);
+  margin-bottom: clamp(0.5rem, 4vw, 1.25rem);
 }
 
 .popup-text strong {
@@ -1926,9 +1956,17 @@ html {
   padding: clamp(0.65rem, 2vw, 1rem) clamp(1rem, 3vw, 2.5rem);
 }
 
+.cta-button--small {
+  font-size: 0.85rem !important;
+  padding: 0.75rem 2rem !important;
+  margin-top: 0.5rem !important;
+  width: auto !important;
+}
+
 .popup-dismiss {
-  background: transparent;
-  border: none;
+  background: var(--primary-gold);
+  color: white;
+  border: 0px solid var(--border-light);
   cursor: pointer;
   font-family: var(--font-body);
   font-size: clamp(0.8rem, 2.5vw, 0.95rem);

@@ -446,71 +446,75 @@ class ScrollToTop {
 // ===== OPENING HOURS WEEK SYSTEM =====
 class OpeningHoursManager {
   constructor() {
-    this.evenWeekTab = document.getElementById('evenWeekTab');
-    this.oddWeekTab = document.getElementById('oddWeekTab');
-    this.evenWeekHours = document.getElementById('evenWeekHours');
-    this.oddWeekHours = document.getElementById('oddWeekHours');
+    this.tabs = {
+      even:    document.getElementById('evenWeekTab'),
+      odd:     document.getElementById('oddWeekTab'),
+      week28:  document.getElementById('week28Tab'),
+      week29:  document.getElementById('week29Tab'),
+      week30:  document.getElementById('week30Tab'),
+      jamilla: document.getElementById('jamillaTab'),
+    };
+    this.panels = {
+      even:    document.getElementById('evenWeekHours'),
+      odd:     document.getElementById('oddWeekHours'),
+      week28:  document.getElementById('week28Hours'),
+      week29:  document.getElementById('week29Hours'),
+      week30:  document.getElementById('week30Hours'),
+      jamilla: document.getElementById('jamillaHours'),
+    };
     this.currentWeekNumber = document.getElementById('currentWeekNumber');
-    
+    this.VACATION_WEEK_MAP = { 28: 'week28', 29: 'week29', 30: 'week30', 35: 'jamilla', 36: 'jamilla', 37: 'jamilla' };
+
     this.init();
   }
-  
+
   init() {
-    if (!this.evenWeekTab) return; // Exit if elements don't exist on this page
-    
-    // Set up current week display and active tab
+    if (!this.tabs.even) return;
+
     this.updateCurrentWeek();
-    
-    // Add click handlers for tabs
-    this.evenWeekTab.addEventListener('click', () => this.showWeek('even'));
-    this.oddWeekTab.addEventListener('click', () => this.showWeek('odd'));
+
+    Object.entries(this.tabs).forEach(([key, tab]) => {
+      if (tab) tab.addEventListener('click', () => this.showWeek(key));
+    });
   }
-  
+
   getCurrentWeekNumber() {
     const now = new Date();
-    const start = new Date(now.getFullYear(), 0, 1);
-    const days = Math.floor((now - start) / (24 * 60 * 60 * 1000));
-    return Math.ceil((days + start.getDay() + 1) / 7);
+    const jan4 = new Date(now.getFullYear(), 0, 4);
+    const startOfWeek1 = new Date(jan4);
+    startOfWeek1.setDate(jan4.getDate() - ((jan4.getDay() + 6) % 7));
+    const diff = now - startOfWeek1;
+    return Math.floor(diff / (7 * 24 * 60 * 60 * 1000)) + 1;
   }
-  
-  isEvenWeek() {
-    return this.getCurrentWeekNumber() % 2 === 0;
-  }
-  
+
   updateCurrentWeek() {
     const weekNumber = this.getCurrentWeekNumber();
-    const isEven = this.isEvenWeek();
-    
-    // Update week number display
+    const vacationKey = this.VACATION_WEEK_MAP[weekNumber];
+    const isEven = weekNumber % 2 === 0;
+
     if (this.currentWeekNumber) {
-      this.currentWeekNumber.textContent = `Week ${weekNumber} (${isEven ? 'Even' : 'Oneven'})`;
+      if (vacationKey) {
+        this.currentWeekNumber.textContent = `Week ${weekNumber} (Vakantie)`;
+      } else {
+        this.currentWeekNumber.textContent = `Week ${weekNumber} (${isEven ? 'Even' : 'Oneven'})`;
+      }
     }
-    
-    // Show current week's schedule and activate correct tab
-    if (isEven) {
-      this.showWeek('even');
+
+    if (vacationKey) {
+      this.showWeek(vacationKey);
     } else {
-      this.showWeek('odd');
+      this.showWeek(isEven ? 'even' : 'odd');
     }
   }
-  
+
   showWeek(weekType) {
-    // Remove active class from both tabs
-    this.evenWeekTab.classList.remove('active');
-    this.oddWeekTab.classList.remove('active');
-    
-    // Hide both schedules
-    this.evenWeekHours.style.display = 'none';
-    this.oddWeekHours.style.display = 'none';
-    
-    // Show selected week
-    if (weekType === 'even') {
-      this.evenWeekTab.classList.add('active');
-      this.evenWeekHours.style.display = 'flex';
-    } else {
-      this.oddWeekTab.classList.add('active');
-      this.oddWeekHours.style.display = 'flex';
-    }
+    Object.values(this.tabs).forEach(tab => tab && tab.classList.remove('active'));
+    Object.values(this.panels).forEach(panel => { if (panel) panel.style.display = 'none'; });
+
+    const tab = this.tabs[weekType];
+    const panel = this.panels[weekType];
+    if (tab) tab.classList.add('active');
+    if (panel) panel.style.display = 'flex';
   }
 }
 
@@ -572,7 +576,13 @@ class PopupManager {
   init() {
     this.show();
     document.getElementById('popupClose').addEventListener('click', () => this.close());
-    document.getElementById('popupDismiss').addEventListener('click', () => this.close());
+    document.getElementById('popupDismiss').addEventListener('click', () => {
+      this.close();
+      setTimeout(() => {
+        const contact = document.querySelector('#contact');
+        if (contact) contact.scrollIntoView({ behavior: 'smooth' });
+      }, 420);
+    });
 
     this.overlay.addEventListener('click', (e) => {
       if (e.target === this.overlay) this.close();
