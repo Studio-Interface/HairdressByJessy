@@ -25,6 +25,27 @@
 
 <body>
 
+    <div class="popup-overlay" id="kerstPopup" role="dialog" aria-modal="true" aria-labelledby="kerstPopupTitle">
+        <div class="popup-box">
+            <button class="popup-close" id="popupClose" aria-label="Pop-up sluiten">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="popup-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h2 class="popup-title" id="kerstPopupTitle">De agenda raakt vol!</h2>
+            <p class="popup-text">Tot aan de <strong>kerstdagen</strong> zijn er nog maar <strong>weinig plekken</strong> beschikbaar.</p>
+            <p class="popup-text">Wil je er tijdens de feestdagen stralend uitzien? Wacht niet te lang en plan snel je afspraak.</p>
+            <div class="popup-buttons">
+                <a href="tel:0634609242" class="cta-button" id="popupCall">
+                    <i class="fas fa-phone"></i>
+                    <span class="bel-tekst">Bel direct</span><span class="tel">06 34 60 92 42</span>
+                </a>
+                <button class="popup-later" id="popupLater">Misschien later</button>
+            </div>
+        </div>
+    </div>
+
     <header class="header">
         <div class="container">
             <a href="index.html" class="logo">

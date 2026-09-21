@@ -527,6 +527,55 @@ class PageTransitions {
   }
 }
 
+// ===== POPUP MANAGER =====
+class PopupManager {
+  constructor() {
+    this.overlay = document.getElementById('kerstPopup');
+    if (!this.overlay) return;
+
+    this.storageKey = 'kerstPopupGetoond';
+    if (this.wasShown()) {
+      this.overlay.classList.add('hidden');
+      return;
+    }
+
+    this.init();
+  }
+
+  wasShown() {
+    try {
+      return sessionStorage.getItem(this.storageKey) === '1';
+    } catch {
+      return false;
+    }
+  }
+
+  close() {
+    this.overlay.classList.remove('visible');
+    setTimeout(() => this.overlay.classList.add('hidden'), 400);
+    try {
+      sessionStorage.setItem(this.storageKey, '1');
+    } catch {}
+    document.removeEventListener('keydown', this.onKeydown);
+  }
+
+  init() {
+    this.onKeydown = (e) => {
+      if (e.key === 'Escape') this.close();
+    };
+
+    document.getElementById('popupClose').addEventListener('click', () => this.close());
+    document.getElementById('popupLater').addEventListener('click', () => this.close());
+    document.getElementById('popupCall').addEventListener('click', () => this.close());
+    this.overlay.addEventListener('click', (e) => {
+      if (e.target === this.overlay) this.close();
+    });
+    document.addEventListener('keydown', this.onKeydown);
+
+    setTimeout(() => this.overlay.classList.add('visible'), 800);
+  }
+}
+
 // ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all components
@@ -541,6 +590,7 @@ document.addEventListener('DOMContentLoaded', () => {
   new OpeningHoursManager();
   new WhatsAppLinksManager();
   new PageTransitions();
+  new PopupManager();
 
   // Zet actieve nav link op basis van huidige pagina
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
