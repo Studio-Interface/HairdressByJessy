@@ -447,23 +447,14 @@ class ScrollToTop {
 class OpeningHoursManager {
   constructor() {
     this.tabs = {
-      even:    document.getElementById('evenWeekTab'),
-      odd:     document.getElementById('oddWeekTab'),
-      week28:  document.getElementById('week28Tab'),
-      week29:  document.getElementById('week29Tab'),
-      week30:  document.getElementById('week30Tab'),
-      jamilla: document.getElementById('jamillaTab'),
+      even: document.getElementById('evenWeekTab'),
+      odd:  document.getElementById('oddWeekTab'),
     };
     this.panels = {
-      even:    document.getElementById('evenWeekHours'),
-      odd:     document.getElementById('oddWeekHours'),
-      week28:  document.getElementById('week28Hours'),
-      week29:  document.getElementById('week29Hours'),
-      week30:  document.getElementById('week30Hours'),
-      jamilla: document.getElementById('jamillaHours'),
+      even: document.getElementById('evenWeekHours'),
+      odd:  document.getElementById('oddWeekHours'),
     };
     this.currentWeekNumber = document.getElementById('currentWeekNumber');
-    this.VACATION_WEEK_MAP = { 28: 'week28', 29: 'week29', 30: 'week30', 35: 'jamilla', 36: 'jamilla', 37: 'jamilla' };
 
     this.init();
   }
@@ -489,22 +480,13 @@ class OpeningHoursManager {
 
   updateCurrentWeek() {
     const weekNumber = this.getCurrentWeekNumber();
-    const vacationKey = this.VACATION_WEEK_MAP[weekNumber];
     const isEven = weekNumber % 2 === 0;
 
     if (this.currentWeekNumber) {
-      if (vacationKey) {
-        this.currentWeekNumber.textContent = `Week ${weekNumber} (Vakantie)`;
-      } else {
-        this.currentWeekNumber.textContent = `Week ${weekNumber} (${isEven ? 'Even' : 'Oneven'})`;
-      }
+      this.currentWeekNumber.textContent = `Week ${weekNumber} (${isEven ? 'Even' : 'Oneven'})`;
     }
 
-    if (vacationKey) {
-      this.showWeek(vacationKey);
-    } else {
-      this.showWeek(isEven ? 'even' : 'odd');
-    }
+    this.showWeek(isEven ? 'even' : 'odd');
   }
 
   showWeek(weekType) {
@@ -545,55 +527,6 @@ class PageTransitions {
   }
 }
 
-// ===== POPUP MANAGER =====
-class PopupManager {
-  constructor() {
-    this.overlay = document.getElementById('prijzenPopup');
-    if (!this.overlay) return;
-
-    if (sessionStorage.getItem('popupGetoond')) {
-      this.overlay.classList.add('hidden');
-      return;
-    }
-
-    this.init();
-  }
-
-  show() {
-    setTimeout(() => {
-      this.overlay.classList.add('visible');
-    }, 300);
-  }
-
-  close() {
-    this.overlay.classList.remove('visible');
-    setTimeout(() => {
-      this.overlay.classList.add('hidden');
-    }, 400);
-    sessionStorage.setItem('popupGetoond', '1');
-  }
-
-  init() {
-    this.show();
-    document.getElementById('popupClose').addEventListener('click', () => this.close());
-    document.getElementById('popupDismiss').addEventListener('click', () => {
-      this.close();
-      setTimeout(() => {
-        const contact = document.querySelector('#contact');
-        if (contact) contact.scrollIntoView({ behavior: 'smooth' });
-      }, 420);
-    });
-
-    this.overlay.addEventListener('click', (e) => {
-      if (e.target === this.overlay) this.close();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') this.close();
-    });
-  }
-}
-
 // ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all components
@@ -608,7 +541,6 @@ document.addEventListener('DOMContentLoaded', () => {
   new OpeningHoursManager();
   new WhatsAppLinksManager();
   new PageTransitions();
-  new PopupManager();
 
   // Zet actieve nav link op basis van huidige pagina
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';

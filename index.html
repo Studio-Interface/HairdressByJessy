@@ -25,29 +25,6 @@
 
 <body>
 
-    <!-- Prijzen popup -->
-    <div class="popup-overlay" id="prijzenPopup">
-        <div class="popup-box">
-            <button class="popup-close" id="popupClose" aria-label="Popup sluiten">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="popup-icon">
-                <i class="fas fa-umbrella-beach"></i>
-            </div>
-            <h2 class="popup-title">Vakantie-informatie</h2>
-            <p class="popup-text">Houd rekening met de onderstaande vakanties<br>bij het maken van uw afspraak.</p>
-            <p class="popup-text"><strong>Jessy-Lee</strong> heeft vakantie van <strong>8 t/m 30 juli</strong>.<br>De zaak is in deze periode open op:<br>8, 9, 10, 15, 17, 21, 22, 23 en 24 juli.</p>
-            <p class="popup-text"><strong>Jamilla</strong> heeft vakantie van <strong>24 augustus t/m 13 september</strong>.<br>De zaak is in deze periode geopend<br>van dinsdag t/m vrijdag.</p>
-            <p class="popup-text">Bedankt voor uw begrip!</p>
-            <div class="popup-buttons">
-                <button class="cta-button cta-button--small popup-dismiss" id="popupDismiss">
-                    <i class="fas fa-clock"></i>
-                    Bekijk openingstijden
-                </button>
-            </div>
-        </div>
-    </div>
-
     <header class="header">
         <div class="container">
             <a href="index.html" class="logo">
@@ -295,34 +272,6 @@
                         </button>
                     </div>
 
-                    <div class="vacation-tabs-group">
-                        <span class="vacation-tabs-label">Vakantie Jessy-Lee (8 – 30 jul)</span>
-                        <div class="week-tabs week-tabs--vacation">
-                            <button class="week-tab week-tab--vacation" data-week="week28" id="week28Tab">
-                                <span class="week-label">Week 28</span>
-                                <span class="week-example">6 – 12 jul</span>
-                            </button>
-                            <button class="week-tab week-tab--vacation" data-week="week29" id="week29Tab">
-                                <span class="week-label">Week 29</span>
-                                <span class="week-example">13 – 19 jul</span>
-                            </button>
-                            <button class="week-tab week-tab--vacation" data-week="week30" id="week30Tab">
-                                <span class="week-label">Week 30</span>
-                                <span class="week-example">20 – 26 jul</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="vacation-tabs-group">
-                        <span class="vacation-tabs-label">Vakantie Jamilla (24 aug – 13 sep)</span>
-                        <div class="week-tabs week-tabs--vacation">
-                            <button class="week-tab week-tab--vacation" data-week="jamilla" id="jamillaTab">
-                                <span class="week-label">Vakantie Jamilla</span>
-                                <span class="week-example">24 aug – 13 sep</span>
-                            </button>
-                        </div>
-                    </div>
-
                     <div class="opening-hours" id="evenWeekHours">
                         <div class="hours-item weekend">
                             <span>Maandag</span>
@@ -352,46 +301,6 @@
                             <span>Zondag</span>
                             <span>Gesloten</span>
                         </div>
-                    </div>
-
-                    <div class="opening-hours" id="week28Hours" style="display: none;">
-                        <div class="hours-item weekend"><span>Maandag</span><span>Gesloten</span></div>
-                        <div class="hours-item weekend"><span>Dinsdag</span><span>Gesloten</span></div>
-                        <div class="hours-item"><span>Woensdag</span><span>9:00 - 17:30</span></div>
-                        <div class="hours-item"><span>Donderdag</span><span>9:00 - 17:30</span></div>
-                        <div class="hours-item"><span>Vrijdag</span><span>9:00 - 17:30</span></div>
-                        <div class="hours-item weekend"><span>Zaterdag</span><span>Gesloten</span></div>
-                        <div class="hours-item weekend"><span>Zondag</span><span>Gesloten</span></div>
-                    </div>
-
-                    <div class="opening-hours" id="week29Hours" style="display: none;">
-                        <div class="hours-item weekend"><span>Maandag</span><span>Gesloten</span></div>
-                        <div class="hours-item weekend"><span>Dinsdag</span><span>Gesloten</span></div>
-                        <div class="hours-item"><span>Woensdag</span><span>9:00 - 17:30</span></div>
-                        <div class="hours-item weekend"><span>Donderdag</span><span>Gesloten</span></div>
-                        <div class="hours-item"><span>Vrijdag</span><span>9:00 - 17:30</span></div>
-                        <div class="hours-item weekend"><span>Zaterdag</span><span>Gesloten</span></div>
-                        <div class="hours-item weekend"><span>Zondag</span><span>Gesloten</span></div>
-                    </div>
-
-                    <div class="opening-hours" id="week30Hours" style="display: none;">
-                        <div class="hours-item weekend"><span>Maandag</span><span>Gesloten</span></div>
-                        <div class="hours-item"><span>Dinsdag</span><span>9:00 - 17:30</span></div>
-                        <div class="hours-item"><span>Woensdag</span><span>9:00 - 17:30</span></div>
-                        <div class="hours-item"><span>Donderdag</span><span>9:00 - 17:30</span></div>
-                        <div class="hours-item"><span>Vrijdag</span><span>9:00 - 17:30</span></div>
-                        <div class="hours-item weekend"><span>Zaterdag</span><span>Gesloten</span></div>
-                        <div class="hours-item weekend"><span>Zondag</span><span>Gesloten</span></div>
-                    </div>
-
-                    <div class="opening-hours" id="jamillaHours" style="display: none;">
-                        <div class="hours-item weekend"><span>Maandag</span><span>Gesloten</span></div>
-                        <div class="hours-item"><span>Dinsdag</span><span>9:00 - 17:30</span></div>
-                        <div class="hours-item"><span>Woensdag</span><span>9:00 - 12:00</span></div>
-                        <div class="hours-item"><span>Donderdag</span><span>9:00 - 17:30</span></div>
-                        <div class="hours-item"><span>Vrijdag</span><span>9:00 - 17:30</span></div>
-                        <div class="hours-item weekend"><span>Zaterdag</span><span>Gesloten</span></div>
-                        <div class="hours-item weekend"><span>Zondag</span><span>Gesloten</span></div>
                     </div>
 
                     <div class="opening-hours" id="oddWeekHours" style="display: none;">
@@ -425,6 +334,17 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- TODO: placeholders vervangen door de echte KvK- en BTW-nummers -->
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <span class="footer-legal-name">Hairdress By Jessy</span>
+                <span>KvK: 88065901<span class="footer-sep">·</span>BTW: NL123456789B01</span>
+            </div>
+            <div class="footer-credit">
+                Website gemaakt door <a href="https://studiointerface.nl" target="_blank" rel="noopener noreferrer">Studio Interface</a>
             </div>
         </div>
     </footer>
